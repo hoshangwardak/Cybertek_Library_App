@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/cybertek/steps_definitions",
         dryRun = false,
-        tags = "@TC53"
+        tags = "@librarian or @student"
 )
 public class CukesRunner {
 }
