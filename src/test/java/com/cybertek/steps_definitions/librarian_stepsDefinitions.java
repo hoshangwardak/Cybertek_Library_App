@@ -21,8 +21,13 @@ public class librarian_stepsDefinitions {
     }
 
     @Then("user should see the dashboard in the url")
-    public void user_should_see_the_dashboard_in_the_url() {
-        login.dashboardIsDisplayed();
+    public void userShouldSeeTheDashboardInTheUrl() {
+        login.dashboardIsDisplayed("dashboard");
+    }
+
+    @Then("user should see the word {string} in the url")
+    public void userShouldSeeTheWordInTheUrl(String arg0) {
+        login.dashboardIsDisplayed(arg0);
     }
 
     // Logging in as a librarian
@@ -32,9 +37,12 @@ public class librarian_stepsDefinitions {
     }
 
     @Then("user should see the books in the url")
-    public void user_should_see_the_books_in_the_url() {
-        login.booksIsDisplayed();
+    public void userShouldSeeTheBooksInTheUrl() {
+        login.booksIsDisplayed("books");
     }
 
-
+    @Then("user should see the {string} in the url")
+    public void userShouldSeeTheInTheUrl(String arg0) {
+        login.booksIsDisplayed(arg0);
+    }
 }

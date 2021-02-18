@@ -6,11 +6,9 @@ Feature: logging in as different users
   @TC1_1
   Scenario: logging in as librarian
     When user login as a librarian
-    Then user should see the dashboard in the url
+    Then user should see the word "dashboard" in the url
 
   @TC1_2
   Scenario: logging in as student
     When user login as a student
-    Then user should see the books in the url
-
-
+    Then user should see the "books" in the url

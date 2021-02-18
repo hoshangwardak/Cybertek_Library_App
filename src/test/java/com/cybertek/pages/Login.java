@@ -33,8 +33,8 @@ public class Login {
         signInButton.click();
     }
 
-    public void dashboardIsDisplayed() {
-        String expectedWord = "dashboard";
+    public void dashboardIsDisplayed(String expectedWord) {
+
 
         BrowserUtils.sleep(3);
         String actualUrl = Driver.getDriver().getCurrentUrl();
@@ -51,8 +51,7 @@ public class Login {
         signInButton.click();
     }
 
-    public void booksIsDisplayed() {
-        String expectedWord = "books";
+    public void booksIsDisplayed(String expectedWord) {
 
         BrowserUtils.sleep(3);
         String actualUrl = Driver.getDriver().getCurrentUrl();
