@@ -7,6 +7,9 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Login {
 
@@ -23,43 +26,41 @@ public class Login {
     @FindBy(xpath = "//button[.='Sign in']")
     public WebElement signInButton;
 
-    public void getEnvironment() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("qa2_url"));
+    public void getLibrarianUsername(String username) {
+        emailAddressInputBox.sendKeys(username);
     }
 
-    public void loginAsLibrarian() {
-        emailAddressInputBox.sendKeys(ConfigurationReader.getProperty("librarianEmail"));
-        passwordInputBox.sendKeys(ConfigurationReader.getProperty("librarianPassword"));
+    public void getLibrarianPassword(String password) {
+        passwordInputBox.sendKeys(password);
+    }
+
+    public void signIn() {
         signInButton.click();
     }
 
-    public void dashboardIsDisplayed() {
-        String expectedWord = "dashboard";
-
-        BrowserUtils.sleep(3);
-        String actualUrl = Driver.getDriver().getCurrentUrl();
-
-        Assert.assertTrue(actualUrl.contains(expectedWord));
-        System.out.println(actualUrl);
-        BrowserUtils.sleep(2);
+    public void dashboardIsDisplayed(String expectedWord) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.urlContains(expectedWord));
+        String actualDashboardUrl = Driver.getDriver().getCurrentUrl();
+        System.out.println("actualDashboardUrl = " + actualDashboardUrl);
+        Assert.assertTrue(actualDashboardUrl.contains(expectedWord));
         Driver.closeDriver();
     }
 
-    public void loginAsStudent() {
-        emailAddressInputBox.sendKeys(ConfigurationReader.getProperty("studentEmail"));
-        passwordInputBox.sendKeys(ConfigurationReader.getProperty("studentPassword"));
-        signInButton.click();
+    public void getStudentUsername(String username) {
+        emailAddressInputBox.sendKeys(username);
     }
 
-    public void booksIsDisplayed() {
-        String expectedWord = "books";
+    public void getStudentPassword(String password) {
+        passwordInputBox.sendKeys(password);
+    }
 
-        BrowserUtils.sleep(3);
-        String actualUrl = Driver.getDriver().getCurrentUrl();
-
-        Assert.assertTrue(actualUrl.contains(expectedWord));
-        System.out.println(actualUrl);
-        BrowserUtils.sleep(2);
+    public void booksIsDisplayed(String expectedWord) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.urlContains(expectedWord));
+        String actualBooksUrl = Driver.getDriver().getCurrentUrl();
+        System.out.println("actualBooksUrl = " + actualBooksUrl);
+        Assert.assertTrue(actualBooksUrl.contains(expectedWord));
         Driver.closeDriver();
     }
 
