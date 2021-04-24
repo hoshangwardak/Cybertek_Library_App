@@ -1,14 +1,17 @@
-Feature: logging in as different users
+Feature: Login with parameters
 
-  Background:
-    Given user is on the login page
+  @librarianWithParameters1
+  Scenario: Login as librarian 13
+    Given I am on the login page
+    When I enter username "librarian13@library"
+    And I enter password '9rf6axdD'
+    And click the sign in button
+    And there should be 2841 users
+    Then dashboard should be displayed
 
-  @TC1_1
-  Scenario: logging in as librarian
-    When user login as a librarian
-    Then user should see the word "dashboard" in the url
-
-  @TC1_2
-  Scenario: logging in as student
-    When user login as a student
-    Then user should see the "books" in the url
+  @librarianWithParameters2
+  Scenario: Login as librarian same line
+    Given I am on the login page
+    When I login using "librarian13@library" and "9rf6axdD"
+    And there should be 2841 'users'
+    Then dashboard should be displayed

@@ -1,16 +1,15 @@
-Feature: logging in as different users
+Feature: Login
+  As I user, I should be able to login
 
-  Background:
-    Given user is on the login page
+  @librarian
+  Scenario: Login as a librarian
+    Given I am on the login page
+    When I login as a librarian
+    Then dashboard should be displayed
 
-  @TC1_1
-  Scenario: logging in as librarian
-    When user login as a librarian
-    Then user should see the dashboard in the url
-
-  @TC1_2
-  Scenario: logging in as student
-    When user login as a student
-    Then user should see the books in the url
-
+  @student
+  Scenario: Login as a student
+    Given I am on the login page
+    When I login as a student
+    Then books should be displayed
 
