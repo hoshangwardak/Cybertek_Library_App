@@ -22,13 +22,13 @@ public class Login_stepDefinitions {
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("qa2url"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("qa1url"));
     }
 
     @When("I login as a librarian")
     public void i_login_as_a_librarian() {
-        login.getLibrarianUsername(ConfigurationReader.getProperty("librarianEmail"));
-        login.getLibrarianPassword(ConfigurationReader.getProperty("librarianPassword"));
+        login.getLibrarianUsername(ConfigurationReader.getProperty("librarianEmail1"));
+        login.getLibrarianPassword(ConfigurationReader.getProperty("librarianPassword1"));
         login.signIn();
     }
 
@@ -39,8 +39,8 @@ public class Login_stepDefinitions {
 
     @When("I login as a student")
     public void iLoginAsAStudent() {
-        login.getStudentUsername(ConfigurationReader.getProperty("studentEmail"));
-        login.getStudentPassword(ConfigurationReader.getProperty("studentPassword"));
+        login.getStudentUsername(ConfigurationReader.getProperty("studentEmail1"));
+        login.getStudentPassword(ConfigurationReader.getProperty("studentPassword1"));
         login.signIn();
     }
 

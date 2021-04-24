@@ -55,9 +55,9 @@ public class LandingPage {
     }
 
     public void getEnvironment() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("qa2url"));
-        login.getLibrarianUsername(ConfigurationReader.getProperty("librarianEmail"));
-        login.getLibrarianPassword(ConfigurationReader.getProperty("librarianPassword"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("qa1url"));
+        login.getLibrarianUsername(ConfigurationReader.getProperty("librarianEmail1"));
+        login.getLibrarianPassword(ConfigurationReader.getProperty("librarianPassword1"));
         login.signIn();
     }
 
